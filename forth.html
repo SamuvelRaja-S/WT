@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>Biggest Three Numbers</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+            margin-top: 50px;
+        }
+        button {
+            width: 30%;
+            height: 5%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input {
+            width: 50%;
+            height: 4%;
+        }
+        select {
+            width: 50%;
+            height: 4%;
+        }
+        textarea {
+            width: 50%;
+            height: 4%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <center>
+                <h1>Biggest of Three Numbers</h1><br>
+                <h2><label>First number :</label>&nbsp;&nbsp;&nbsp;
+                <input type="number" id="a" name="one" required><br><br></h2>
+
+                <h2><label>Second number :</label>
+                <input type="number" id="b" name="two" required><br><br></h2>
+
+                <h2><label>Third number :</label>&nbsp;&nbsp;&nbsp;
+                <input type="number" id="c" name="three" required><br><br></h2>
+
+                <button type="button" onclick="big()">Calculate</button>
+            </center>
+        </form>
+    </div>
+
+    <script>
+        function big() {
+            let a = parseFloat(document.getElementById("a").value);  // Convert to number
+            let b = parseFloat(document.getElementById("b").value);  // Convert to number
+            let c = parseFloat(document.getElementById("c").value);  // Convert to number
+
+            if ((a > b) && (a > c)) {
+                alert("The biggest number is " + a);
+            } else if ((b > a) && (b > c)) {
+                alert("The biggest number is " + b);
+            } else {
+                alert("The biggest number is " + c);
+            }
+        }
+    </script>
+</body>
+</html>
