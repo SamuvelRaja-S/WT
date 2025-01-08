@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade of Students</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Students Mark Report</h1>
+    <script>
+        let name, dept, yr, m1, m2, m3, total, avg, Result, Grade;
+
+        do {
+            name = window.prompt("Enter the name:");
+            dept = window.prompt("Enter the Department name:");
+            yr = parseInt(window.prompt("Enter the year:"));
+            m1 = parseInt(window.prompt("Enter the CG mark:"));
+            m2 = parseInt(window.prompt("Enter the CN mark:"));
+            m3 = parseInt(window.prompt("Enter the WT mark:"));
+
+            if (m1 > 100 || m1 < 0 || m2 > 100 || m2 < 0 || m3 > 100 || m3 < 0) {
+                alert("Enter marks between 0 and 100");
+            }
+        } while (m1 < 0 || m1 > 100 || m2 < 0 || m2 > 100 || m3 < 0 || m3 > 100);
+
+        total = m1 + m2 + m3;
+        avg = total / 3;
+
+        if (m1 >= 40 && m2 >= 40 && m3 >= 40) {
+            Result = "Pass";
+            if (avg > 90) {
+                Grade = "O";
+            } else if (avg > 80 && avg <= 90) {
+                Grade = "A";
+            } else if (avg > 70 && avg <= 80) {
+                Grade = "B";
+            } else if (avg > 60 && avg <= 70) {
+                Grade = "C";
+            } else {
+                Grade = "D";
+            }
+        } else {
+            Result = "Fail";
+            Grade = "Fail";
+        }
+
+        document.writeln(`
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Year</th>
+                        <th>CG Mark</th>
+                        <th>CN Mark</th>
+                        <th>WT Mark</th>
+                        <th>Total</th>
+                        <th>Average</th>
+                        <th>Result</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${name}</td>
+                        <td>${dept}</td>
+                        <td>${yr}</td>
+                        <td>${m1}</td>
+                        <td>${m2}</td>
+                        <td>${m3}</td>
+                        <td>${total}</td>
+                        <td>${avg.toFixed(2)}</td>
+                        <td>${Result}</td>
+                        <td>${Grade}</td>
+                    </tr>
+                </tbody>
+            </table>
+        `);
+    </script>
+</body>
+</html>
