@@ -30,6 +30,9 @@
             name = window.prompt("Enter the name:");
             dept = window.prompt("Enter the Department name:");
             yr = parseInt(window.prompt("Enter the year:"));
+            if (!name || !dept || Number.isNaN(yr) || yr > 1 || yr < 4) {
+                alert("Invalid input! Please re-enter details.");
+            }
             m1 = parseInt(window.prompt("Enter the CG mark:"));
             m2 = parseInt(window.prompt("Enter the CN mark:"));
             m3 = parseInt(window.prompt("Enter the WT mark:"));
