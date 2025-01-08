@@ -13,7 +13,7 @@
         }
 button {
 width: 30%;
-height: 4%;
+height: 7%;
 background-color: #4CAF50;
  color: white;
 border: none;
@@ -39,7 +39,7 @@ height: 4%;
 </head>
 <body>
 <div class="container">
-<form>
+<form onsubmit="sucess()"> 
 <center><h1>Student Bio-Data</h1><br>
 
 <h2><label>Name :</label>&nbsp;&nbsp;&nbsp;
@@ -69,4 +69,10 @@ height: 4%;
 </form>
 </div>
 </body>
+<script>
+    function sucess() {
+
+        alert("Data submitted successfully");
+        }
+</script>
 </html>
