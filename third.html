@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Object</title>
+</head>
+<script>
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;  // Correcting the month offset
+    var year = date.getFullYear();
+
+    function startTimer() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+
+        // Format minutes and seconds to add a leading zero
+        if (m < 10) m = "0" + m;
+        if (s < 10) s = "0" + s;
+
+        // Determine greeting message based on time
+        var greets = "";
+        if (h < 12) {
+            greets = "Hi Good Morning! Have a good day";
+        } else if (h >= 12 && h < 16) {
+            greets = "Hi Good Afternoon! Have a nice day";
+        } else {
+            greets = "Hi Good Evening";
+        }
+
+        // Update the HTML with current date, time, and greeting
+        document.getElementById('date').innerHTML = "<center><h1>Date: " + day + "/" + month + "/" + year + "</h1></center>";
+        document.getElementById('time').innerHTML = "<center><h1>Time: " + h + ":" + m + ":" + s + "</h1></center>";
+        document.getElementById('wish').innerHTML = "<center><h1>" + greets + "</h1></center>";
+
+        // Set a timeout to refresh the timer every second
+        var t = setTimeout(startTimer, 1000);
+    }
+
+    // Call startTimer when the page loads
+    window.onload = startTimer;
+</script>
+
+<body>
+    <div id="date"></div>
+    <div id="time"></div>
+    <div id="wish"></div>
+</body>
+</html>
