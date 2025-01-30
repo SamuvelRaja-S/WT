@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Calculator</title>
+</head>
+<body>
+    <h2>Income Tax Calculator</h2>
+    <label for="annualIncome">Enter annual income: </label>
+    <input type="number" id="annualIncome" required>
+    <br>
+    <label for="insurancePolicies">Enter total amount of insurance policies under 80C: </label>
+    <input type="number" id="insurancePolicies" required>
+    <br>
+    <button onclick="calculateTax()">Calculate Tax</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateIncomeTax(taxableIncome) {
+            let incomeTax = 0;
+            if (taxableIncome <= 250000) {
+                incomeTax = 0;
+            } else if (taxableIncome > 250000 && taxableIncome <= 500000) {
+                incomeTax = 0.1 * (taxableIncome - 250000);
+            } else if (taxableIncome > 500000 && taxableIncome <= 1500000) {
+                incomeTax = 25000 + 0.2 * (taxableIncome - 500000);
+            } else if (taxableIncome > 1500000 && taxableIncome <= 3000000) {
+                incomeTax = 125000 + 0.3 * (taxableIncome - 1500000);
+            } else if (taxableIncome > 3000000 && taxableIncome <= 5000000) {
+                incomeTax = 325000 + 0.3 * (taxableIncome - 3000000);
+            } else if (taxableIncome > 5000000) {
+                incomeTax = 1125000 + 0.3 * (taxableIncome - 5000000);
+            }
+            return incomeTax;
+        }
+
+        function calculateTax() {
+            let annualIncome = parseFloat(document.getElementById('annualIncome').value);
+            let insurancePolicies = parseFloat(document.getElementById('insurancePolicies').value);
+            let taxableIncome = annualIncome - Math.min(insurancePolicies, 150000);
+            let incomeTax = calculateIncomeTax(taxableIncome);
+            document.getElementById('result').innerText = `Income tax to be paid: Rs. ${incomeTax}`;
+        }
+    </script>
+</body>
+</html>
