@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String In-Built Functions</title>
+    <script language="javascript">
+        function processString() {
+            var s = document.getElementById("inputString").value;
+            var choice = document.getElementById("functionChoice").value;
+            var result = "";
+
+            switch (choice) {
+                case "length":
+                    result = "Length of the string: " + s.length;
+                    break;
+                case "index":
+                    var searchStr = prompt("Enter substring to find index:");
+                    result = "Index of '" + searchStr + "': " + s.indexOf(searchStr);
+                    break;
+                case "uppercase":
+                    result = "Uppercase: " + s.toUpperCase();
+                    break;
+                case "lowercase":
+                    result = "Lowercase: " + s.toLowerCase();
+                    break;
+                case "charAt":
+                    var index = parseInt(prompt("Enter index:"));
+                    result = "Character at index " + index + ": " + s.charAt(index);
+                    break;
+                case "split":
+                    var delimiter = prompt("Enter delimiter for split:");
+                    result = "Split result: " + s.split(delimiter).join(" | ");
+                    break;
+                case "concat":
+                    var str2 = prompt("Enter string to concatenate:");
+                    result = "Concatenated string: " + s.concat(str2);
+                    break;
+                case "slice":
+                    var start = parseInt(prompt("Enter start index:"));
+                    var end = parseInt(prompt("Enter end index:"));
+                    result = "Sliced string: " + s.slice(start, end);
+                    break;
+                case "trim":
+                    result = "Trimmed string: " + s.trim();
+                    break;
+                case "replace":
+                    var find = prompt("Enter text to replace:");
+                    var replaceWith = prompt("Enter replacement text:");
+                    result = "Replaced string: " + s.replace(find, replaceWith);
+                    break;
+                default:
+                    result = "Please select a valid function.";
+            }
+            document.getElementById("result").innerHTML = "<h2>Result: " + result + "</h2>";
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>String In-Built Functions</h1>
+        <input type="text" id="inputString" placeholder="Enter a string">
+        <select id="functionChoice">
+            <option value="length">Length</option>
+            <option value="index">Index of Substring</option>
+            <option value="uppercase">To Uppercase</option>
+            <option value="lowercase">To Lowercase</option>
+            <option value="charAt">Character at Index</option>
+            <option value="split">Split String</option>
+            <option value="concat">Concatenate</option>
+            <option value="slice">Slice</option>
+            <option value="trim">Trim</option>
+            <option value="replace">Replace</option>
+        </select>
+        <button onclick="processString()">Apply</button>
+        <div id="result"></div>
+    </center>
+</body>
+</html>
