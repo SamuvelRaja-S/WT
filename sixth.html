@@ -1,87 +1,120 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<script language="Javascript">
-var f = 0, a = new Array();
-var n = 0;
-
-function create() {
-    n = parseInt(prompt("Enter size of the Array "));
-    for (var i = 0; i < n; i++) {
-        a[i] = parseInt(prompt("Enter the values"));
-    }
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>Created successfully</h2>";
-}
-
-function view() {
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>Array elements: " + a + "</h2>";
-}
-
-function f1() {
-    var k = parseInt(prompt("Enter the element to be searched"));
-    for (var i = 0; i < n; i++) {
-        if (k == a[i]) {
-            f = 1;
-            break;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
         }
-    }
-    if (f == 1) {
-        document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>" + k + " is found</h2>";
-    } else {
-        document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>" + k + " is not found</h2>";
-    }
-}
+        h1 {
+            color: #333;
+        }
+        .btn-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            justify-content: center;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            min-width: 300px;
+        }
+    </style>
+    <script>
+        var arr = [];
 
-function f2() {
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>The length is: " + n + "</h2>";
-}
+        function create() {
+            let n = parseInt(prompt("Enter size of the Array"));
+            arr = [];
+            for (let i = 0; i < n; i++) {
+                arr.push(parseInt(prompt("Enter the values")));
+            }
+            document.getElementById('result').innerHTML = "<h2>Created successfully</h2>";
+        }
 
-function f3() {
-    var p = a.pop();
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>Pop element is: " + p + "</h2>";
-}
+        function view() {
+            document.getElementById('result').innerHTML = "<h2>Array elements: " + arr.join(", ") + "</h2>";
+        }
 
-function f4() {
-    var n = parseInt(prompt("Enter the element to Push"));
-    a.push(n);
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>Push element is: " + n + "</h2>";
-    view();
-}
+        function searchElement() {
+            let k = parseInt(prompt("Enter the element to be searched"));
+            let found = arr.includes(k);
+            document.getElementById('result').innerHTML = `<h2>${k} is ${found ? "found" : "not found"}</h2>`;
+        }
 
-function f5() {
-    var r = a.reverse();
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>Reverse the Array: " + r + "</h2>";
-}
+        function getLength() {
+            document.getElementById('result').innerHTML = `<h2>The length is: ${arr.length}</h2>`;
+        }
 
-function f6() {
-    var s = a.sort();
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>Sorted order: " + s + "</h2>";
-}
+        function popElement() {
+            let p = arr.pop();
+            document.getElementById('result').innerHTML = `<h2>Pop element: ${p}</h2>`;
+        }
 
-function f7() {
-    var sli = a.slice(1, 4);
-    document.getElementById('result').innerHTML = "<h2 style='text-align:left;'>Slice element (1, 3): " + sli + "</h2>";
-}
-</script>
+        function pushElement() {
+            let num = parseInt(prompt("Enter the element to Push"));
+            arr.push(num);
+            view();
+        }
+
+        function reverseArray() {
+            arr.reverse();
+            view();
+        }
+
+        function sortArray() {
+            arr.sort((a, b) => a - b);
+            view();
+        }
+
+        function sliceArray() {
+            let sliced = arr.slice(1, 4);
+            document.getElementById('result').innerHTML = `<h2>Sliced elements (1,3): ${sliced.join(", ")}</h2>`;
+        }
+
+        function clearResult() {
+            document.getElementById('result').innerHTML = "";
+        }
+    </script>
 </head>
 <body>
-<h1>Array object</h1>
-<table border="1">
-<tr>
-<td align="left"><input type="button" onclick="create()" value="Create"><br></td>
-<td align="left"><input type="button" onclick="view()" value="View"></td>
-<td align="left"><input type="button" onclick="f1()" value="Search"></td>
-<td align="left"><input type="button" onclick="f2()" value="Length"></td>
-</tr>
-<tr>
-<td align="left"><input type="button" onclick="f3()" value="Pop"></td>
-<td align="left"><input type="button" onclick="f4()" value="Push"></td> 
-<td align="left"><input type="button" onclick="f5()" value="Reverse"></td>
-<td align="left"><input type="button" onclick="f6()" value="Sort"></td>
-</tr>
-<tr>
-<td align="left"><input type="button" onclick="f7()" value="Slice"></td>
-</tr>
-</table>
-<div id="result" align="left"></div><br><br>
+    <h1>Array Operations</h1>
+    <div class="btn-container">
+        <button onclick="create()">Create</button>
+        <button onclick="view()">View</button>
+        <button onclick="searchElement()">Search</button>
+        <button onclick="getLength()">Length</button>
+        <button onclick="popElement()">Pop</button>
+        <button onclick="pushElement()">Push</button>
+        <button onclick="reverseArray()">Reverse</button>
+        <button onclick="sortArray()">Sort</button>
+        <button onclick="sliceArray()">Slice</button>
+        <button onclick="clearResult()">Clear</button>
+    </div>
+    <div id="result"></div>
 </body>
 </html>
