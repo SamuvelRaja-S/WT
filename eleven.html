@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            width: 40%;
+            margin: auto;
+            margin-top: 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 95%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        function validatePassword() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var errorMessage = document.getElementById("error");
+
+            // Updated password regex: Includes at least one uppercase, one lowercase, one number, and one special character
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{8,}$/;
+
+            if (username.trim() === "") {
+                errorMessage.innerHTML = "Username cannot be empty!";
+                return false;
+            }
+
+            if (!passwordRegex.test(password)) {
+                errorMessage.innerHTML = "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.innerHTML = "Passwords do not match!";
+                return false;
+            }
+
+            alert("You have successfully logged in!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form onsubmit="return validatePassword()">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required><br>
+            <p class="error" id="error"></p>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
