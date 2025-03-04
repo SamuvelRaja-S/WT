@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 60%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 48%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var fatherName = document.getElementById("fatherName").value;
+            var dob = document.getElementById("dob").value;
+            var age = document.getElementById("age").value;
+            var gender = document.getElementById("gender").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            
+            if (name == "" || fatherName == "" || dob == "" || age == "" || gender == "" || phone == "" || email == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+            alert("Application Submitted Successfully!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Sri S Ramasamy Naidu Memorial College</h2>
+        <form onsubmit="return validateForm()">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="fatherName">Father's Name:</label>
+            <input type="text" id="fatherName" name="fatherName">
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age">
+            
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="">--Select Gender--</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4"></textarea>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone">
+            
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email">
+            
+            <h3>Educational Qualification</h3>
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>Education</th>
+                    <th>Institution</th>
+                    <th>Marks</th>
+                    <th>Year of Passing</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="education1"></td>
+                    <td><input type="text" name="institution1"></td>
+                    <td><input type="text" name="marks1"></td>
+                    <td><input type="text" name="year1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" name="education2"></td>
+                    <td><input type="text" name="institution2"></td>
+                    <td><input type="text" name="marks2"></td>
+                    <td><input type="text" name="year2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text" name="education3"></td>
+                    <td><input type="text" name="institution3"></td>
+                    <td><input type="text" name="marks3"></td>
+                    <td><input type="text" name="year3"></td>
+                </tr>
+            </table>
+            
+            <div class="button-container">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

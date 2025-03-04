@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <script>
+        function display(value) {
+            document.getElementById("result").value += value;
+        }
+        
+        function clearScreen() {
+            document.getElementById("result").value = "";
+        }
+        
+        function calculate() {
+            try {
+                document.getElementById("result").value = eval(document.getElementById("result").value);
+            } catch (err) {
+                alert("Invalid Expression");
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td colspan="4"><input type="text" id="result" readonly></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="C" onclick="clearScreen()"></td>
+            <td><input type="button" value="/" onclick="display('/')"></td>
+            <td><input type="button" value="*" onclick="display('*')"></td>
+            <td><input type="button" value="-" onclick="display('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="display('7')"></td>
+            <td><input type="button" value="8" onclick="display('8')"></td>
+            <td><input type="button" value="9" onclick="display('9')"></td>
+            <td><input type="button" value="+" onclick="display('+')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="display('4')"></td>
+            <td><input type="button" value="5" onclick="display('5')"></td>
+            <td><input type="button" value="6" onclick="display('6')"></td>
+            <td rowspan="2"><input type="button" value="=" onclick="calculate()" style="height: 90px;"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="display('1')"></td>
+            <td><input type="button" value="2" onclick="display('2')"></td>
+            <td><input type="button" value="3" onclick="display('3')"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="0" onclick="display('0')" style="width: 100%;"></td>
+            <td><input type="button" value="." onclick="display('.')"></td>
+        </tr>
+    </table>
+</body>
+</html>

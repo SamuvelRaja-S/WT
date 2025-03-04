@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INCOME TAX CALCULATION</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function tax() {
+            var bp = parseFloat(document.fm.bp.value);
+            var name = document.fm.name.value;
+            var empNo = document.fm.no.value;
+
+            var da = bp * 0.5;
+            var hra = bp * 0.15;
+            var pf = bp * 0.05;
+            var gpay = bp + da + hra;
+            var ai = gpay * 12; // Annual Income
+            var tx = 0, txm = 0;
+
+            if (ai > 300000 && ai <= 500000) {
+                tx = (ai - 300000) * 0.05;
+            } else if (ai > 500000 && ai <= 1000000) {
+                tx = 200000 * 0.05 + (ai - 500000) * 0.1;
+            } else if (ai > 1000000 && ai <= 2000000) {
+                tx = 200000 * 0.05 + 500000 * 0.1 + (ai - 1000000) * 0.15;
+            } else if (ai > 2000000) {
+                tx = 200000 * 0.05 + 500000 * 0.1 + 1000000 * 0.15 + (ai - 2000000) * 0.2;
+            }
+
+            if (tx > 0) {
+                txm = tx / 12;
+            }
+
+            var netpay = gpay - txm - pf;
+
+            document.getElementById("itcom").innerHTML =
+                `<h3>INCOME TAX DETAILS</h3>
+                <hr>
+                <strong>DA: 50% and HRA: 15%, PF: 5%</strong><br>
+                DA: ${da.toFixed(2)}<br>
+                HRA: ${hra.toFixed(2)}<br>
+                PF: ${pf.toFixed(2)}<br>
+                Gross Pay: ${gpay.toFixed(2)}<hr>
+                Annual Income: ${ai.toFixed(2)}<br>
+                Total Tax Amount: ${Math.round(tx)}<br>
+                Tax Deduction per Month: ${Math.round(txm)}<br>
+                Net Pay: ${Math.round(netpay)}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>INCOME TAX CALCULATION</h1>
+        <form name="fm">
+            <label>Emp Name:</label>
+            <input type="text" name="name"><br><br>
+
+            <label>Emp No:</label>
+            <input type="text" name="no"><br><br>
+
+            <label>Basic Pay:</label>
+            <input type="text" name="bp"><br><br>
+
+            <button type="button" onclick="tax()">Calculate Tax</button>
+        </form>
+        <hr>
+        <div id="itcom"></div>
+    </div>
+</body>
+</html>
