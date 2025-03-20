@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mouse Events</title>
+    <script>
+      function showmsg1(msg) {
+        alert(msg);
+      }
+    </script>
+  </head>
+  <body>
+    <h1 onmouseover="showmsg1('Mouse Over')" onmouseout="showmsg1('Mouse Out')">Hover over me!</h1>
+
+    <h1 onmousedown="showmsg1('Mouse Down')">Click me!</h1>
+
+    <h1 onmouseup="showmsg1('Mouse Up')">Release the click!</h1>
+
+    <input type="button" value="Click me!" onclick="showmsg1('Button Clicked')">
+
+    <h1 ondblclick="showmsg1('Double Click')">Double-click me!</h1>
+  </body>
+</html>
